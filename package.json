@@ -1,0 +1,10 @@
+{
+  "description": "De-emphasizes qualified Haskell identifiers.",
+  "engines": {
+    "atom": "^1.21.0"
+  },
+  "license": "MIT",
+  "name": "haskell-scry",
+  "repository": "https://github.com/tfausak/atom-haskell-scry",
+  "version": "0.0.0"
+}
