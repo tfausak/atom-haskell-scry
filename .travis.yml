@@ -7,10 +7,11 @@ env:
 
 script:
   - curl --remote-name https://raw.githubusercontent.com/atom/ci/master/build-package.sh
-  - source build-package.sh
+  - sh build-package.sh
 
 after_success:
   - >
     test -n "$APM_TOKEN" -a -n "$TRAVIS_TAG" &&
-    "$APM_SCRIPT_PATH" login --token "$APM_TOKEN" &&
-    "$APM_SCRIPT_PATH" publish --tag "$TRAVIS_TAG"
+    apm="$HOME/atom/usr/bin/apm-stable" &&
+    "$apm" login --token "$APM_TOKEN" &&
+    "$apm" publish --tag "$TRAVIS_TAG"
