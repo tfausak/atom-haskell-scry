@@ -1,0 +1,16 @@
+language: generic
+
+env:
+  global:
+    # APM_TOKEN
+    secure: piPmJfzrNx1uNfClPno6KurFEo+fU8H6nHIMXHwQXtfSBQLn/CeLReWuuxTjD2J38gaT0v+eyIIgzx4KEDPLAiSkaY8KlkXdIxAGiinxMUbaU7sLkbRU+rYW0qgYioQLsQmT13JZfuEoPlgxlt+4xBdo4MndkpLwS9BEkK+soX3hY6Y5wREbokerwf0ORDqMCKYm92IVs1mipcGxHjWuLbK87JiTiRwxyOGRdnsmb5/DtwZuGGXLDiTdEij2K8DRccy3HStrm7SPpE+dEY8F1F9npogtltV+y8gJXhPZR/VMMM4S0kaFR/Mqsi7KkMojBxgwcTvN/3OR+GsH5+yTNCZNAGZY9VNa+skeaAJV6nBllMLGU8DPiSXGbocDFRafmgfD39mdb0C9gdepahgM5c75HjB6cIIBv46s80gGRHD2g2DHETM+arX5bv6O9Xm6QvKc/c7Biu5RJywohhSnWZ7YhVKn9aaXYtclToMhCko6RCstk3x5qLTONMpldzAqoICj4b9tZvSxbNtnGhcssMRjL4PlYC8MSUqWjhMCTcEZmN16qD3uUEvErkvmFrdZS/XNN67R/y/Q2FEtEK/QtariFWmccP0A7ZJOvCYEm1DKf9JC5Q5pUwVs/GVW6F3VaCwHp4gle/nREUvSyIZBpi1y2qjkIiV0to6Ee2sxtis=
+
+script:
+  - curl --remote-name https://raw.githubusercontent.com/atom/ci/master/build-package.sh
+  - sh build-package.sh
+
+after_success:
+  - >
+    test -n "$APM_TOKEN" -a -n "$TRAVIS_TAG" &&
+    apm login --token "$APM_TOKEN" &&
+    apm publish --tag "$TRAVIS_TAG"
