@@ -12,5 +12,6 @@ script:
 after_success:
   - >
     test -n "$APM_TOKEN" -a -n "$TRAVIS_TAG" &&
-    apm login --token "$APM_TOKEN" &&
-    apm publish --tag "$TRAVIS_TAG"
+    apm='atom/Atom.app/Contents/Resources/app/apm/node_modules/.bin/apm' &&
+    "$apm" login --token "$APM_TOKEN" &&
+    "$apm" publish --tag "$TRAVIS_TAG"
