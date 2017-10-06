@@ -12,6 +12,6 @@ script:
 after_success:
   - >
     test -n "$APM_TOKEN" -a -n "$TRAVIS_TAG" &&
-    apm="$HOME/atom/usr/bin/apm-stable" &&
+    apm="$HOME/atom/usr/bin/apm" &&
     "$apm" login --token "$APM_TOKEN" &&
     "$apm" publish --tag "$TRAVIS_TAG"
