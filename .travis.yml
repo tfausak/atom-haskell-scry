@@ -11,8 +11,8 @@ env:
     secure: j1HmjXKEhW8h7j7/JweLFq6fjI0qUypigJ1+F/o07stGkfCSsxYAuQwbHN1heQUj0tAKNlRQeuAywTtl4kVseTzLZ8mWpeKNv3Uhcc6JqT9+pnsHnar7IgPeeLNRfLrCOu7d9vsR6FWUJjGJQV36rby0SWPiafNixVoM5K3eFu91a4XCwzZ0eiBzftCpqmxPPK3HKO91cCfqbTuCEoIOZiZdK9zMq4yeM1AXvMPI4ILB8n9BL8yn1jkL+3ljjP6Jh7Gu/6O10O1YrsMZSVCf3NJ9Wb8aJ+VJcIsbzTtJ6HWdTp/iNDXQgbXEk+6VIK32hYf9IHR6NmsSjFTjI7QrX+dvQdkcun2pJsARmJT0Bgn9zIvTB/kubHgsoKClqnd1xaDbWWgPYBDp9lAM6ohYBbqlAzEocLFdlqbLIzWzuvXjkFEKIScvx/CmpymA8FYYdqREG8fUK1BJh7TKEiJWjxPrrEuslJQdjeflyaeJ539C6dvGFCbP78jssCxyDqWv80PipeGdTQTZXit4VxRNZjUHf1ANTmriTvYpQR3DY35eL7kBVuXKJsGmUXbDwnGpYJ4gQ7vYBasbZ5IROf/Uc2JfE5lecyoosFcXHRYvh594e8ed9Ck3DKjnnGCmXoCszFQJPaHgFd56SifhqHj5ClwprsIiDsimq+ko+hqIGmE=
 
 script:
-  - mkdir --parents /var/lib/dbus
-  - dbus-uuidgen > /var/lib/dbus/machine-id
+  - sudo mkdir --parents /var/lib/dbus
+  - dbus-uuidgen | sudo tee /var/lib/dbus/machine-id
   - curl --remote-name https://raw.githubusercontent.com/atom/ci/master/build-package.sh
   - sh build-package.sh
 
