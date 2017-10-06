@@ -2,16 +2,12 @@ language: generic
 
 env:
   global:
-    # APM_TOKEN
-    secure: piPmJfzrNx1uNfClPno6KurFEo+fU8H6nHIMXHwQXtfSBQLn/CeLReWuuxTjD2J38gaT0v+eyIIgzx4KEDPLAiSkaY8KlkXdIxAGiinxMUbaU7sLkbRU+rYW0qgYioQLsQmT13JZfuEoPlgxlt+4xBdo4MndkpLwS9BEkK+soX3hY6Y5wREbokerwf0ORDqMCKYm92IVs1mipcGxHjWuLbK87JiTiRwxyOGRdnsmb5/DtwZuGGXLDiTdEij2K8DRccy3HStrm7SPpE+dEY8F1F9npogtltV+y8gJXhPZR/VMMM4S0kaFR/Mqsi7KkMojBxgwcTvN/3OR+GsH5+yTNCZNAGZY9VNa+skeaAJV6nBllMLGU8DPiSXGbocDFRafmgfD39mdb0C9gdepahgM5c75HjB6cIIBv46s80gGRHD2g2DHETM+arX5bv6O9Xm6QvKc/c7Biu5RJywohhSnWZ7YhVKn9aaXYtclToMhCko6RCstk3x5qLTONMpldzAqoICj4b9tZvSxbNtnGhcssMRjL4PlYC8MSUqWjhMCTcEZmN16qD3uUEvErkvmFrdZS/XNN67R/y/Q2FEtEK/QtariFWmccP0A7ZJOvCYEm1DKf9JC5Q5pUwVs/GVW6F3VaCwHp4gle/nREUvSyIZBpi1y2qjkIiV0to6Ee2sxtis=
+    # ATOM_ACCESS_TOKEN
+    secure: j1HmjXKEhW8h7j7/JweLFq6fjI0qUypigJ1+F/o07stGkfCSsxYAuQwbHN1heQUj0tAKNlRQeuAywTtl4kVseTzLZ8mWpeKNv3Uhcc6JqT9+pnsHnar7IgPeeLNRfLrCOu7d9vsR6FWUJjGJQV36rby0SWPiafNixVoM5K3eFu91a4XCwzZ0eiBzftCpqmxPPK3HKO91cCfqbTuCEoIOZiZdK9zMq4yeM1AXvMPI4ILB8n9BL8yn1jkL+3ljjP6Jh7Gu/6O10O1YrsMZSVCf3NJ9Wb8aJ+VJcIsbzTtJ6HWdTp/iNDXQgbXEk+6VIK32hYf9IHR6NmsSjFTjI7QrX+dvQdkcun2pJsARmJT0Bgn9zIvTB/kubHgsoKClqnd1xaDbWWgPYBDp9lAM6ohYBbqlAzEocLFdlqbLIzWzuvXjkFEKIScvx/CmpymA8FYYdqREG8fUK1BJh7TKEiJWjxPrrEuslJQdjeflyaeJ539C6dvGFCbP78jssCxyDqWv80PipeGdTQTZXit4VxRNZjUHf1ANTmriTvYpQR3DY35eL7kBVuXKJsGmUXbDwnGpYJ4gQ7vYBasbZ5IROf/Uc2JfE5lecyoosFcXHRYvh594e8ed9Ck3DKjnnGCmXoCszFQJPaHgFd56SifhqHj5ClwprsIiDsimq+ko+hqIGmE=
 
 script:
   - curl --remote-name https://raw.githubusercontent.com/atom/ci/master/build-package.sh
   - sh build-package.sh
 
 after_success:
-  - >
-    test -n "$APM_TOKEN" -a -n "$TRAVIS_TAG" &&
-    apm="$HOME/atom/usr/bin/apm" &&
-    "$apm" login --token "$APM_TOKEN" &&
-    "$apm" publish --tag "$TRAVIS_TAG"
+  - test "$TRAVIS_TAG" && "$HOME/atom/usr/bin/apm" publish --tag "$TRAVIS_TAG"
