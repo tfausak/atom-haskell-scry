@@ -2,12 +2,12 @@
   "activationHooks": [
     "language-haskell:grammar-used"
   ],
-  "description": "De-emphasizes qualified Haskell identifiers.",
+  "description": "🔮 De-emphasizes qualified Haskell identifiers.",
   "engines": {
     "atom": "^1.30.0"
   },
   "license": "MIT",
   "name": "haskell-scry",
   "repository": "https://github.com/tfausak/atom-haskell-scry",
-  "version": "1.0.8"
+  "version": "1.0.9"
 }
