@@ -1,6 +1,0 @@
-language: generic
-sudo: false
-
-script:
-  - curl --remote-name https://raw.githubusercontent.com/atom/ci/master/build-package.sh
-  - sh build-package.sh
