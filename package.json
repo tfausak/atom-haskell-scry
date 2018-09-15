@@ -1,7 +1,10 @@
 {
+  "activationHooks": [
+    "language-haskell:grammar-used"
+  ],
   "description": "De-emphasizes qualified Haskell identifiers.",
   "engines": {
-    "atom": "^1.21.0"
+    "atom": "^1.30.0"
   },
   "license": "MIT",
   "name": "haskell-scry",
